@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to the PDF Merger {% endblock %}</h1>
+    <p>Dateien zum Mergen hochladen.</p>
+
+        <div>
+            <input id="digestFile" type="file" multiple accept=".pdf" />
+        </div>
+
+{% endblock %}

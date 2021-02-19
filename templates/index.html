@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="content">
     <h1>{% block title %} Welcome to the PDF Merger {% endblock %}</h1>
     <p>Dateien zum Mergen hochladen.</p>
 
-        <div>
-            <input id="mergeFile" type="file" multiple accept=".pdf" />
-        </div>
+    <form action="/" method="post">
+        <input name="mergeFile[]" type="file" multiple accept=".pdf" />
+    </form>
 
+    <table>
+      {% for files in file_names %}
+        <tr><td>{{ files.name }}</td></tr>
+      {% endfor %}
+    </table>
+
+    <div class ="outer">
+      <form action="/merge/" method=post>
+          <p>
+          <button class="buttons" name="merge_button" type="submit"> <span class='button-text'>Merge</span></button>
+          </p>
+      </form>
+    </div>
+
+</div>
 {% endblock %}

@@ -52,6 +52,7 @@ def index():
         files = request.files.getlist("files[]")
         print("Found files!", file=sys.stderr)
 
+        # Merge the two files and write it to ouput_files
         output_files = merger(files)
 
         # for file in files:
@@ -97,9 +98,9 @@ def merger(input_files):
 
     for file in input_files:
         print(f"File {file}")
-        # pdf_merger.append(io.BytesIO(file[3]))
+        pdf_merger.append(file)
 
-    with open('./downloads/result.pdf', "wb") as f_out:
+    with open('./result/merged.pdf', "wb") as f_out:
         pdf_merger.write(f_out)
 
     return f_out

@@ -5,23 +5,33 @@
     <h1>{% block title %} Welcome to the PDF Merger {% endblock %}</h1>
     <p>Dateien zum Mergen hochladen.</p>
 
-    <form action="/" method="post">
-        <input name="mergeFile[]" type="file" multiple accept=".pdf" />
-    </form>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="files[]" multiple="true" autocomplete="off" required>
+            <input type="submit" value="Submit!">
+		</p>
+    </dl>
+</form>
 
-    <table>
-      {% for files in file_names %}
-        <tr><td>{{ files.name }}</td></tr>
-      {% endfor %}
-    </table>
+{#<form action="download" method="post"#}
+{#      <input type="submit" value="Save">#}
 
-    <div class ="outer">
-      <form action="/merge/" method=post>
-          <p>
-          <button class="buttons" name="merge_button" type="submit"> <span class='button-text'>Merge</span></button>
-          </p>
-      </form>
-    </div>
+
+{#    <form  action="'download_merged_file'" method="POST">#}
+{#      {{  form.download(class="btn btn-primary")   }}#}
+{#    </form>#}
+
+{#    <form  action="{{  url_for('download_merged_file')  }}" method="POST">#}
+{#      {{  form.download(class="btn btn-primary")   }}#}
+{#    </form>#}
+{#    <table>#}
+{#      {% for files in file_names %}#}
+{#        <tr><td>{{ files.name }}</td></tr>#}
+{#      {% endfor %}#}
+{#    </table>#}
+
+
 
 </div>
 {% endblock %}
